@@ -11,6 +11,9 @@ import com.bob.googleplay.fragment.LoadingPager.LoadedResult;
 
 import com.bob.googleplay.utils.UIUtils;
 
+import java.util.List;
+import java.util.Map;
+
 
 /**
  * Created by Administrator on 2016/2/19.
@@ -58,6 +61,27 @@ public abstract class BaseFragment extends Fragment {
             loadingPager.loadData();
         }
 
+    }
+
+    //检测服务器数据
+    protected LoadedResult checkData(Object data){
+        if (data==null){
+            return LoadedResult.EMPTY;
+        }
+
+        if (data instanceof List){
+            if (((List) data).size()==0){
+                return LoadedResult.EMPTY;
+            }
+        }
+
+        if (data instanceof Map){
+            if (((Map) data).size()==0){
+                return LoadedResult.EMPTY;
+            }
+        }
+
+        return LoadedResult.SUCCESS;
     }
 
     protected abstract View onLoadSuccessView();

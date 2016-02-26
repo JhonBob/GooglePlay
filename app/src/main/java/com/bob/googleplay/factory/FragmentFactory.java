@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.util.SparseArrayCompat;
 import android.util.SparseArray;
 
+import com.bob.googleplay.fragment.AppFragment;
 import com.bob.googleplay.fragment.BaseFragment;
 import com.bob.googleplay.fragment.HomeFragment;
 
@@ -45,7 +46,7 @@ public class FragmentFactory  {
                 fragment=new HomeFragment();
                 break;
             case 1:
-                fragment=new HomeFragment();
+                fragment=new AppFragment();
                 break;
             case 2:
                 fragment=new HomeFragment();

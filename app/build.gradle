@@ -23,4 +23,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile files('libs/xUtils-2.6.8.jar')
+    compile files('libs/gson-2.2.1.jar')
+    compile files('libs/org.apache.http.legacy.jar')
 }
