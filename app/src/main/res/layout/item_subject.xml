@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@drawable/item_appinfo_bg"
+        android:orientation="vertical"
+        android:padding="4dp" >
+
+        <com.bob.googleplay.view.RatioLayout
+            xmlns:bobjhon="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            bobjhon:ratio="3.42"
+            bobjhon:relative="width">
+
+            <!-- 通过宽高比和宽度值来确定 高度 -->
+
+            <ImageView
+                android:id="@+id/item_subject_iv_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_default"
+                android:scaleType="fitXY"/>
+        </com.bob.googleplay.view.RatioLayout>
+
+        <TextView
+            android:id="@+id/item_subject_iv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="title" />
+    </LinearLayout>
+
+</FrameLayout>

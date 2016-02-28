@@ -10,6 +10,4 @@ import java.util.List;
 public class HomeBean {
     public List<AppInfoBean> list;//listView对应的数据
     public List<String> picture;//轮播图数据
-
-
 }

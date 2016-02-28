@@ -6,7 +6,11 @@ import android.util.SparseArray;
 
 import com.bob.googleplay.fragment.AppFragment;
 import com.bob.googleplay.fragment.BaseFragment;
+import com.bob.googleplay.fragment.CategoryFragment;
+import com.bob.googleplay.fragment.GameFragment;
 import com.bob.googleplay.fragment.HomeFragment;
+import com.bob.googleplay.fragment.HotFragment;
+import com.bob.googleplay.fragment.SubjectFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,19 +53,19 @@ public class FragmentFactory  {
                 fragment=new AppFragment();
                 break;
             case 2:
-                fragment=new HomeFragment();
+                fragment=new GameFragment();
                 break;
             case 3:
-                fragment=new HomeFragment();
+                fragment=new SubjectFragment();
                 break;
             case 4:
                 fragment=new HomeFragment();
                 break;
             case 5:
-                fragment=new HomeFragment();
+                fragment=new CategoryFragment();
                 break;
             case 6:
-                fragment=new HomeFragment();
+                fragment=new HotFragment();
                 break;
             default:
                 break;

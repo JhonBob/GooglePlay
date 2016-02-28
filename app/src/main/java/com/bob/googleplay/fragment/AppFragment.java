@@ -10,6 +10,7 @@ import com.bob.googleplay.adapter.AppItemHolder;
 import com.bob.googleplay.adapter.BaseHolder;
 import com.bob.googleplay.adapter.SuperBaseAdapter;
 import com.bob.googleplay.bean.AppInfoBean;
+import com.bob.googleplay.factory.ListViewFactory;
 import com.bob.googleplay.http.AppProtocol;
 import com.bob.googleplay.utils.UIUtils;
 import com.bob.googleplay.fragment.LoadingPager.LoadedResult;
@@ -28,15 +29,8 @@ public class AppFragment extends BaseFragment {
 
     @Override
     protected View onLoadSuccessView() {
-        ListView mListView=new ListView(UIUtils.getContext());
-        mListView.setCacheColorHint(Color.TRANSPARENT);
-        mListView.setSelector(android.R.color.transparent);
-        mListView.setDividerHeight(0);
-        mListView.setScrollingCacheEnabled(false);
-        mListView.setBackgroundColor(UIUtils.getColor(R.color.bg));
-
+        ListView mListView = ListViewFactory.getListView();
         mListView.setAdapter(new AppAdapter(mListView,mDatas));
-
         return mListView;
     }
 
@@ -59,7 +53,7 @@ public class AppFragment extends BaseFragment {
          }
 
          @Override
-         protected BaseHolder<AppInfoBean> getItemHolder() {
+         protected BaseHolder<AppInfoBean> getItemHolder(int position) {
              return new AppItemHolder();
          }
 

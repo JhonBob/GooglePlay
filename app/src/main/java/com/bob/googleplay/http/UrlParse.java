@@ -15,8 +15,62 @@ public class UrlParse {
             case "app":
                 url=getAppUrl(index);
                 break;
+            case "game":
+                url=getGameUrl(index);
+                break;
+            case "subject":
+                url=getSubjectUrl(index);
+                break;
+            case "hot":
+                url=getHotUrl(index);
+                break;
+            case "category":
+                url=getCategoryUrl(index);
+                break;
         }
 
+        return url;
+    }
+
+    private static String getCategoryUrl(int index) {
+        if (index==0){
+            url = "http://10.0.3.2:8080/WebInfos/app/category";
+        }
+        return url;
+    }
+
+    private static String getHotUrl(int index) {
+        if (index==0){
+          url = "http://10.0.3.2:8080/WebInfos/app/hot";
+        }
+        return url;
+    }
+
+    private static String getSubjectUrl(int index) {
+        if (index == 0) {
+            url = "http://10.0.3.2:8080/WebInfos/app/subject1";
+        } else {
+            index = (index / 20) % 3;
+            if (index == 0) {
+                url = "http://10.0.3.2:8080/WebInfos/app/subject1";
+            } else if (index == 1) {
+                url = "http://10.0.3.2:8080/WebInfos/app/subject2";
+            } else {
+                url = "http://10.0.3.2:8080/WebInfos/app/subject3";
+            }
+        }
+        return url;
+    }
+
+    private static String getGameUrl(int index) {
+        index = (index / 20) % 3;
+        if (index == 0) {
+            url = "http://10.0.3.2:8080/WebInfos/app/gamelist1";
+        } else if (index == 1) {
+            url = "http://10.0.3.2:8080/WebInfos/app/gamelist2";
+        } else {
+            url = "http://10.0.3.2:8080/WebInfos/app/gamelist3";
+        }
         return url;
     }
 

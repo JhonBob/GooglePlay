@@ -3,6 +3,7 @@ package com.bob.googleplay.utils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 
 import com.bob.googleplay.BaseApplication;
 
@@ -60,5 +61,49 @@ public class UIUtils {
             getMainHandler().post(task);
         }
 
+    }
+
+    /**
+     * dip 转 px
+     *
+     * @param dip
+     * @return
+     */
+    public static int dip2px(int dip)
+    {
+        //
+        // 公式： dp = px / (dpi / 160) px = dp * (dpi / 160)
+        // dp = px / denisity
+        // px = dp * denisity;
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        float density = metrics.density;
+        return (int) (dip * density + 0.5f);
+    }
+
+    public static int px2dip(int px)
+    {
+        // dp = px / denisity
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        float density = metrics.density;
+        return (int) (px / density + 0.5f);
+    }
+
+    /**
+     * 执行延时任务
+     *
+     */
+    public static void postDelayed(Runnable task, int delayed)
+    {
+        getMainHandler().postDelayed(task, delayed);
+    }
+
+    /**
+     * 移除任务
+     *
+     * @param task
+     */
+    public static void removeCallbacks(Runnable task)
+    {
+        getMainHandler().removeCallbacks(task);
     }
 }

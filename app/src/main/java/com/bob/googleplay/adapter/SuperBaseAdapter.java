@@ -75,6 +75,11 @@ public abstract class SuperBaseAdapter<T> extends BaseAdapter implements Adapter
             //当前为加载更多
             return TYPE_LOAD_MORE;
         }
+        return getNormalItemViewType(position);
+    }
+
+    //父类默认额外的Item就只有一种，孩子可复写添加
+    protected  int getNormalItemViewType(int position){
         return TYPE_NORMAL_ITEM;
     }
 
@@ -88,7 +93,7 @@ public abstract class SuperBaseAdapter<T> extends BaseAdapter implements Adapter
                 holder=getLoadMoreHolder();
             }else {
                 //普通的holder
-                holder=getItemHolder();
+                holder=getItemHolder(position);
             }
             convertView=holder.getRootView();
         }
@@ -205,7 +210,7 @@ public abstract class SuperBaseAdapter<T> extends BaseAdapter implements Adapter
         return null;
     }
 
-    protected abstract BaseHolder<T> getItemHolder();
+    protected abstract BaseHolder<T> getItemHolder(int position);
 
 
     @Override
@@ -214,6 +219,7 @@ public abstract class SuperBaseAdapter<T> extends BaseAdapter implements Adapter
         if (mListView instanceof ListView){
             //头数量，有几个减几
             int count= ((ListView) mListView).getHeaderViewsCount();
+            //System.out.println(count);
             position=position-count;
         }
 

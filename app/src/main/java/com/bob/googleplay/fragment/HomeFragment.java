@@ -1,19 +1,19 @@
 package com.bob.googleplay.fragment;
 
-import android.graphics.Color;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
-import com.bob.googleplay.R;
+
 import com.bob.googleplay.adapter.AppItemHolder;
 import com.bob.googleplay.adapter.BaseHolder;
+import com.bob.googleplay.adapter.HomePictureHolder;
 import com.bob.googleplay.adapter.SuperBaseAdapter;
 import com.bob.googleplay.bean.AppInfoBean;
 import com.bob.googleplay.bean.HomeBean;
+import com.bob.googleplay.factory.ListViewFactory;
 import com.bob.googleplay.fragment.LoadingPager.LoadedResult;
 import com.bob.googleplay.http.HomeProtocol;
-import com.bob.googleplay.utils.UIUtils;
 
 import java.util.List;
 
@@ -30,15 +30,16 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected View onLoadSuccessView() {
-        ListView mListView=new ListView(UIUtils.getContext());
-        mListView.setCacheColorHint(Color.TRANSPARENT);
-        mListView.setSelector(android.R.color.transparent);
-        mListView.setDividerHeight(0);
-        mListView.setScrollingCacheEnabled(false);
-        mListView.setBackgroundColor(UIUtils.getColor(R.color.bg));
+        ListView mListView = ListViewFactory.getListView();
+
+        //创建轮播Holder
+        HomePictureHolder holder=new HomePictureHolder();
+        //加头
+        mListView.addHeaderView(holder.getRootView());
+        //holder设置数据
+        holder.setData(mPictures);
 
         mListView.setAdapter(new HomeAdapter(mListView,mDatas));
-
         return mListView;
     }
 
@@ -112,6 +113,7 @@ public class HomeFragment extends BaseFragment {
                 if (result!=LoadedResult.SUCCESS){
                    return LoadedResult.EMPTY;
                 }
+
                 result=checkData(bean.list);
 
                 if (result!=LoadedResult.SUCCESS){
@@ -121,6 +123,8 @@ public class HomeFragment extends BaseFragment {
                 //拿到数据
                 mDatas=bean.list;
                 mPictures=bean.picture;
+                //System.out.println(mDatas.toString());
+                System.out.println(mPictures.size());
                 return result;
         } catch (Exception e) {
             e.printStackTrace();
@@ -138,7 +142,7 @@ public class HomeFragment extends BaseFragment {
         }
 
         @Override
-        protected BaseHolder<AppInfoBean> getItemHolder() {
+        protected BaseHolder<AppInfoBean> getItemHolder(int position) {
             return new AppItemHolder();
         }
 

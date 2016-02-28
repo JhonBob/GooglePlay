@@ -38,12 +38,6 @@ public class HomeProtocol extends BaseProtocol<HomeBean> {
 //       return null;
 //   }
 
-
-    @Override
-    public HomeBean loadData(int index) throws Exception {
-        return super.loadData(index);
-    }
-
     @Override
     protected HomeBean parseJson(String json) {
         Gson gson=new Gson();
