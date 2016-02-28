@@ -12,6 +12,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Map;
+
 /**
  * Created by Administrator on 2016/2/26.
  */
@@ -19,7 +21,10 @@ public abstract class BaseProtocol<T> {
 
     protected abstract String getInterfaceKey();
     protected abstract T parseJson(String json);
-
+    //孩子有自定义的参数，复写
+    protected String getPacageName(){
+        return null;
+    }
     public T loadData(int index) throws Exception{
         //到本地中去取
         T data=getDataFromLocal(index);
@@ -69,7 +74,11 @@ public abstract class BaseProtocol<T> {
     private T getDataFromNet(int index) throws Exception{
         HttpUtils utils=new HttpUtils();
         String url;
-        url= UrlParse.getUrl(getInterfaceKey(), index);
+        if (!getInterfaceKey().equals("detail")){
+            url= UrlParse.getBaseUrl(getInterfaceKey(), index);
+        }else {
+            url=UrlParse.getUrl(getInterfaceKey(),getPacageName());
+        }
         ResponseStream stream=utils.sendSync(HttpRequest.HttpMethod.GET, url, null);
         //响应码
         int statusCode=stream.getStatusCode();
@@ -103,7 +112,15 @@ public abstract class BaseProtocol<T> {
     //缓存文件
     private File getCacheFile(int index) {
         String dir= FileUtils.getDir("json");
-        String name=getInterfaceKey()+"."+index;
+        String name;
+
+        if (getPacageName()!=null){
+            StringBuffer sb=new StringBuffer();
+            sb.append("_"+getPacageName());
+            name=getInterfaceKey()+sb.toString();
+        }else {
+            name=getInterfaceKey()+"."+index;
+        }
        return new File(dir,name);
     }
 

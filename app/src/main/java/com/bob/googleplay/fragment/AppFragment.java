@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 import com.bob.googleplay.R;
 import com.bob.googleplay.adapter.AppItemHolder;
+import com.bob.googleplay.adapter.AppListAdapter;
 import com.bob.googleplay.adapter.BaseHolder;
 import com.bob.googleplay.adapter.SuperBaseAdapter;
 import com.bob.googleplay.bean.AppInfoBean;
@@ -46,15 +47,10 @@ public class AppFragment extends BaseFragment {
         }
     }
 
-     class AppAdapter extends SuperBaseAdapter<AppInfoBean> {
+     class AppAdapter extends AppListAdapter {
 
          public AppAdapter(AbsListView listView, List<AppInfoBean> mDatas) {
              super(listView, mDatas);
-         }
-
-         @Override
-         protected BaseHolder<AppInfoBean> getItemHolder(int position) {
-             return new AppItemHolder();
          }
 
          @Override

@@ -7,7 +7,7 @@ public class UrlParse {
 
     public static  String url;
 
-    public static String getUrl(String key,int index){
+    public static String getBaseUrl(String key,int index){
         switch (key){
             case "home":
                 url=getHomeUrl(index);
@@ -27,8 +27,25 @@ public class UrlParse {
             case "category":
                 url=getCategoryUrl(index);
                 break;
+            case "recommend":
+                url=getRecommendUrl(index);
+                break;
         }
 
+        return url;
+    }
+
+    public static String getUrl(String key,String packageName){
+        if (key.equals("detail")) {
+            return url="http://10.0.3.2:8080/WebInfos/app/" + packageName + "/" + packageName;
+        }
+        return url;
+    }
+
+    private static String getRecommendUrl(int index) {
+        if (index==0){
+            url = "http://10.0.3.2:8080/WebInfos/app/recommend";
+        }
         return url;
     }
 

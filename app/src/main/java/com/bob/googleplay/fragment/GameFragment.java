@@ -6,6 +6,7 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.bob.googleplay.adapter.AppItemHolder;
+import com.bob.googleplay.adapter.AppListAdapter;
 import com.bob.googleplay.adapter.BaseHolder;
 import com.bob.googleplay.adapter.SuperBaseAdapter;
 import com.bob.googleplay.bean.AppInfoBean;
@@ -48,15 +49,10 @@ public class GameFragment extends BaseFragment{
     }
 
 
-    class GameAdapter extends SuperBaseAdapter<AppInfoBean>{
+    class GameAdapter extends AppListAdapter {
 
         public GameAdapter(AbsListView listView, List<AppInfoBean> mDatas) {
             super(listView, mDatas);
-        }
-
-        @Override
-        protected BaseHolder<AppInfoBean> getItemHolder(int position) {
-            return new AppItemHolder();
         }
 
         @Override

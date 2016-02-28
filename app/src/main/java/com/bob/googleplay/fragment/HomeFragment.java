@@ -6,6 +6,7 @@ import android.widget.ListView;
 
 
 import com.bob.googleplay.adapter.AppItemHolder;
+import com.bob.googleplay.adapter.AppListAdapter;
 import com.bob.googleplay.adapter.BaseHolder;
 import com.bob.googleplay.adapter.HomePictureHolder;
 import com.bob.googleplay.adapter.SuperBaseAdapter;
@@ -135,17 +136,11 @@ public class HomeFragment extends BaseFragment {
     }
 
     //适配器
-    class HomeAdapter extends SuperBaseAdapter<AppInfoBean>{
+    class HomeAdapter extends AppListAdapter{
 
         public HomeAdapter(AbsListView listView,List<AppInfoBean> mDatas) {
             super(listView,mDatas);
         }
-
-        @Override
-        protected BaseHolder<AppInfoBean> getItemHolder(int position) {
-            return new AppItemHolder();
-        }
-
         @Override
         protected List<AppInfoBean> onLoadMoreData() throws Exception {
             return loadMoreData(mDatas.size());

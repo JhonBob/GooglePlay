@@ -10,6 +10,7 @@ import com.bob.googleplay.fragment.CategoryFragment;
 import com.bob.googleplay.fragment.GameFragment;
 import com.bob.googleplay.fragment.HomeFragment;
 import com.bob.googleplay.fragment.HotFragment;
+import com.bob.googleplay.fragment.RecommendFragment;
 import com.bob.googleplay.fragment.SubjectFragment;
 
 import java.util.HashMap;
@@ -59,7 +60,7 @@ public class FragmentFactory  {
                 fragment=new SubjectFragment();
                 break;
             case 4:
-                fragment=new HomeFragment();
+                fragment=new RecommendFragment();
                 break;
             case 5:
                 fragment=new CategoryFragment();

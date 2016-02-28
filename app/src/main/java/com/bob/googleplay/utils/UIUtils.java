@@ -106,4 +106,9 @@ public class UIUtils {
     {
         getMainHandler().removeCallbacks(task);
     }
+
+    public static String getString(int id, Object... formatArgs)
+    {
+        return getResources().getString(id, formatArgs);
+    }
 }
