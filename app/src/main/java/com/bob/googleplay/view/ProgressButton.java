@@ -12,55 +12,67 @@ import android.widget.Button;
 public class ProgressButton extends Button {
 
 
-    private int mProgress;
-    private int mMax;
-    private Drawable mProgressDrawable;
-    private boolean mProgressEnable;
+    private int			mProgress;
+    private int			mMax;
+    private Drawable	mProgressDrawable;
+    private boolean		mProgressEnable;
 
     public ProgressButton(Context context) {
         super(context);
+        // TODO Auto-generated constructor stub
     }
 
     public ProgressButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+        // TODO Auto-generated constructor stub
     }
 
-
-    public void setmProgress(int mProgress) {
-        this.mProgress = mProgress;
+    public void setProgressEnable(boolean enable)
+    {
+        this.mProgressEnable = enable;
     }
 
-
-    public void setmMax(int mMax) {
-        this.mMax = mMax;
+    public void setProgress(int progress)
+    {
+        this.mProgress = progress;
+        invalidate();
     }
 
-    public void setProgressDrawable(Drawable drawable){
-        this.mProgressDrawable=drawable;
+    public void setMax(int max)
+    {
+        this.mMax = max;
     }
 
-    public void setmProgressEnable(boolean enable){
-        this.mProgressEnable=enable;
+    public void setProgressDrawable(Drawable drawable)
+    {
+        this.mProgressDrawable = drawable;
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        if (mProgressEnable){
-            //先画进度
-            int width=getMeasuredWidth();
-            int right=0;
-            if (mMax==0){
-                right= (int) (width*mProgress/100f+0.5f);
-            }else {
-                right= (int) (width*mProgress*1f/mMax+0.5f);
+    protected void onDraw(Canvas canvas)
+    {
+        if (mProgressEnable)
+        {
+            // 先画进度
+
+            int width = getMeasuredWidth();
+            int right = 0;
+            if (mMax == 0)
+            {
+                right = (int) (width * mProgress / 100f + 0.5f);
             }
-            //设置矩形
-            mProgressDrawable.setBounds(0,0,right,getMeasuredHeight());
-            //画的操作
+            else
+            {
+                right = (int) (width * mProgress * 1f / mMax + 0.5f);
+            }
+
+            // 设置矩形
+            mProgressDrawable.setBounds(0, 0, right, getMeasuredHeight());
+            // 画的操作
             mProgressDrawable.draw(canvas);
         }
 
-        //再画文本
-        super.onDraw(canvas);
+        // 再画文本
+        super.onDraw(canvas);// 画文本
     }
 }

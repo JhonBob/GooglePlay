@@ -150,6 +150,7 @@ public abstract class SuperBaseAdapter<T> extends BaseAdapter implements Adapter
         return mLoadMoreHolder;
     }
 
+
     //任务
     class LoadMoreTask implements Runnable{
         @Override

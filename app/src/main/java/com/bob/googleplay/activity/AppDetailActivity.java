@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 
+import com.bob.googleplay.Manager.DownLoadManager;
 import com.bob.googleplay.R;
 import com.bob.googleplay.adapter.AppDetailBottomHolder;
 import com.bob.googleplay.adapter.AppDetailDesHolder;
@@ -38,6 +39,8 @@ public class AppDetailActivity extends BaseActivity {
     private FrameLayout mContainerPic;
     @ViewInject(R.id.app_detail_container_des)
     private FrameLayout mContainerDes;
+
+    private AppDetailBottomHolder bottomHolder;
 
     @Override
     protected void initData() {
@@ -112,12 +115,34 @@ public class AppDetailActivity extends BaseActivity {
         mContainerDes.addView(desHolder.getRootView());
         desHolder.setData(mDatas);
         //5.下载部分
-        AppDetailBottomHolder bottomHolder=new AppDetailBottomHolder();
+        bottomHolder=new AppDetailBottomHolder();
         mContainerBottom.addView(bottomHolder.getRootView());
         bottomHolder.setData(mDatas);
 
+        //注册监听
+        bottomHolder.startObserver();
+
         return view;
 
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (bottomHolder!=null){
+            bottomHolder.stopObserver();
+        }
+
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (bottomHolder!=null){
+           bottomHolder.startObserver();
+        }
     }
 
     @Override

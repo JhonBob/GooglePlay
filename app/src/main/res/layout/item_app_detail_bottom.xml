@@ -34,7 +34,7 @@
 
         <!-- 下载区域 -->
 
-        <Button
+        <com.bob.googleplay.view.ProgressButton
             android:id="@+id/app_detail_download_btn_download"
             android:layout_width="match_parent"
             android:layout_height="38dp"
@@ -44,6 +44,7 @@
             android:layout_toLeftOf="@id/app_detail_download_btn_share"
             android:layout_toRightOf="@id/app_detail_download_btn_favo"
             android:text="下载"
+            android:background="@drawable/progress_loading_normal_bg"
             android:textColor="@android:color/white" />
     </RelativeLayout>
 

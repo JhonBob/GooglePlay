@@ -28,6 +28,7 @@ public class HomeFragment extends BaseFragment {
     private List<AppInfoBean> mDatas;//listView对应的数据
     private List<String> mPictures;//轮播图对应的数据
     private  HomeProtocol mProtocol;//网络协议
+    private HomeAdapter adapter;
 
     @Override
     protected View onLoadSuccessView() {
@@ -39,8 +40,9 @@ public class HomeFragment extends BaseFragment {
         mListView.addHeaderView(holder.getRootView());
         //holder设置数据
         holder.setData(mPictures);
-
-        mListView.setAdapter(new HomeAdapter(mListView,mDatas));
+        adapter=new HomeAdapter(mListView,mDatas);
+        mListView.setAdapter(adapter);
+        adapter.startObserver();
         return mListView;
     }
 
@@ -156,4 +158,19 @@ public class HomeFragment extends BaseFragment {
         return bean.list;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (adapter!=null){
+            adapter.startObserver();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adapter!=null){
+            adapter.stopObserver();
+        }
+    }
 }
