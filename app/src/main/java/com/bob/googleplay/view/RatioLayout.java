@@ -31,6 +31,14 @@ public class RatioLayout extends FrameLayout {
         ta.recycle();
     }
 
+    public void setRatio(float ratio){
+        this.mRatio=ratio;
+    }
+
+    public void setRelative(int relative){
+        this.mRelative=relative;
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         //父容器的宽度

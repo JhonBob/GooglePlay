@@ -1,5 +1,6 @@
 package com.bob.googleplay.activity;
 
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -8,10 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +20,7 @@ import com.bob.googleplay.fragment.BaseFragment;
 import com.bob.googleplay.utils.UIUtils;
 import com.bob.googleplay.view.PagerSlidingTabStrip;
 
-public class MainActivity extends AppCompatActivity implements OnPageChangeListener{
+public class MainActivity extends BaseActivity implements OnPageChangeListener{
 
     private ActionBar mActionBar;
     private ActionBarDrawerToggle mDrawerToggle;//抽屉开关的控件
@@ -33,19 +30,10 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
     private String[] mTitles;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //初始化View
-        initView();
-        //初始化actionBar
-        initActionBar();
-        //初始化数据
-        initData();
-    }
 
-    private void initView(){
+    @Override
+    protected void initView(){
+        setContentView(R.layout.activity_main);
         mDrawerLayout=(DrawerLayout)findViewById(R.id.main_drawer_layout);
         mPager=(ViewPager)findViewById(R.id.main_pager);
         mTabStrip=(PagerSlidingTabStrip)findViewById(R.id.main_tabs);
@@ -55,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
                 UIUtils.getColor(R.color.tab_text_selected));
 
     }
-
-    private void initActionBar() {
+    @Override
+    protected void initActionBar() {
         //获取ActionBar
         mActionBar=getSupportActionBar();
         mActionBar.setTitle("GooglePlay");
@@ -65,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
         mActionBar.setDisplayShowHomeEnabled(true);
 
         //初始化toggle
-        mDrawerToggle=new ActionBarDrawerToggle(this,mDrawerLayout,R.mipmap.ic_drawer_am,
+        mDrawerToggle=new ActionBarDrawerToggle(this,mDrawerLayout,
                 R.string.main_des_drawer_open,R.string.main_des_drawer_close);
         //使用toggle
         mDrawerToggle.syncState();//同步状态
@@ -88,7 +76,8 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
         return super.onOptionsItemSelected(item);
     }
 
-    private void initData() {
+    @Override
+    protected void initData() {
         //初始化标题
         mTitles=UIUtils.getStringArray(R.array.main_titles);
         //给ViewPager设置适配
@@ -190,4 +179,5 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
     public void onPageScrollStateChanged(int state) {
 
     }
+
 }

@@ -26,4 +26,5 @@ dependencies {
     compile files('libs/xUtils-2.6.8.jar')
     compile files('libs/gson-2.2.1.jar')
     compile files('libs/org.apache.http.legacy.jar')
+    compile files('libs/nineoldandroids-2.4.0.jar')
 }

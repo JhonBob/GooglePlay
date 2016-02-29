@@ -30,13 +30,17 @@
             <FrameLayout
                 android:id="@+id/app_detail_container_safe"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:layout_marginTop="10dp">
             </FrameLayout>
             <!--应用图片部分-->
             <FrameLayout
                 android:id="@+id/app_detail_container_pic"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="10dp">
             </FrameLayout>
             <!--应用描述简洁部分-->
             <FrameLayout
