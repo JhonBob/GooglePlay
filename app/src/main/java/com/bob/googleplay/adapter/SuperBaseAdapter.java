@@ -31,6 +31,8 @@ public abstract class SuperBaseAdapter<T> extends BaseAdapter implements Adapter
     private LoadMoreTask mLoadMoreTask;
     private AbsListView mListView;
 
+
+
     public SuperBaseAdapter(AbsListView listView,List<T> mDatas) {
         this.mDatas = mDatas;
         this.mListView=listView;

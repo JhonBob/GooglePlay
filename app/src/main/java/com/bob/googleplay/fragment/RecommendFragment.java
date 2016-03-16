@@ -31,12 +31,12 @@ public class RecommendFragment extends BaseFragment {
         mAdapter=new RecommendAdapter();
         rootView=new StellarMap(UIUtils.getContext());
         //设置样式
-        int dp = UIUtils.dip2px(20);
+        int dp = UIUtils.dip2px(10);
         rootView.setPadding(dp,dp,dp,dp);
         //设置数据
         rootView.setAdapter(mAdapter);
         //设置随机摆放区域（切块）
-        rootView.setRegularity(15,20);
+        rootView.setRegularity(10,15);
         //默认选中0页
         rootView.setGroup(0,true);
         //设置摇一摇
@@ -142,7 +142,7 @@ public class RecommendFragment extends BaseFragment {
             int argb= Color.argb(alpha, red, green, blue);
             tv.setTextColor(argb);
             //设置大小
-            int size=UIUtils.dip2px(random.nextInt(20)+30);//14sp-->24sp
+            int size=UIUtils.dip2px(random.nextInt(10)+10);//14sp-->24sp
             tv.setTextSize(size);
             return tv;
         }

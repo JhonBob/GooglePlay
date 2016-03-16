@@ -19,6 +19,7 @@ import java.util.Random;
 /**
  * Created by Administrator on 2016/2/27.
  */
+//排行界面
 public class HotFragment extends BaseFragment {
     private HotProtocol mHotProtocol;
     private List<String> mDatas;
@@ -27,8 +28,8 @@ public class HotFragment extends BaseFragment {
         ScrollView rootView=new ScrollView(UIUtils.getContext());
         //加载流氏布局
         FlowLayout layout=new FlowLayout(UIUtils.getContext());
-        layout.setSpace(UIUtils.dip2px(10),UIUtils.dip2px(10));
-        layout.setPadding(UIUtils.dip2px(10),UIUtils.dip2px(10),UIUtils.dip2px(10),UIUtils.dip2px(10));
+        layout.setSpace(UIUtils.dip2px(5),UIUtils.dip2px(5));
+        layout.setPadding(UIUtils.dip2px(5),UIUtils.dip2px(5),UIUtils.dip2px(5),UIUtils.dip2px(5));
         rootView.addView(layout);
         int padd=UIUtils.dip2px(10);
         //加数据
@@ -36,7 +37,7 @@ public class HotFragment extends BaseFragment {
             String data=mDatas.get(i);
             TextView tv=new TextView(UIUtils.getContext());
             tv.setText(data);
-            tv.setTextSize(UIUtils.dip2px(30));
+            tv.setTextSize(UIUtils.dip2px(15));
             tv.setTextColor(Color.WHITE);
             tv.setGravity(Gravity.CENTER);
             tv.setPadding(padd, padd, padd, padd);

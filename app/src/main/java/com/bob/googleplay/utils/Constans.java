@@ -1,10 +1,12 @@
 package com.bob.googleplay.utils;
 
+
 /**
  * Created by Administrator on 2016/2/26.
  */
 public interface  Constans {
-    String SERVER_URL="http://10.0.3.2:8080/WebInfos/";
+    String SERVER_URL= "http://7xrv4e.com1.z0.glb.clouddn.com/";
+    //String SERVER_URL="http://10.0.3.2:8080/WebInfos/";
     String IMAGE_BASE_URL=SERVER_URL;
     String DOWNLOAD_BASE_URL=SERVER_URL;
     int PAGE_SIZE=20;
